@@ -4,17 +4,26 @@ import { useState } from 'react';
 
 export default function Home() {
 
+  const nameArray = [
+    'Yanick der Beste',
+    'Gian der flinke',
+    'Peer der grosse',
+    'Pablo du stinksch'
+  ]
+
   let firstName = 'Yanick'
   let secondName = 'Pablo' 
   let tempName = ''
   const [activeName, setActiveName] = useState(firstName);
+  const [activeIndex, setActiveIndex] = useState(0);
 
 
   function switchTitle() {
-    setActiveName(secondName)
-    tempName = secondName;
-    secondName = firstName;
-    firstName = tempName;
+    if(activeIndex < nameArray.length - 1){
+      setActiveIndex(activeIndex + 1)
+    } else {
+      setActiveIndex(0)
+    }
   }
 
   return (
@@ -26,7 +35,7 @@ export default function Home() {
 
       <main>
         <h1 className="title" onClick={switchTitle}>
-          {activeName} schniid dini Haar
+          {nameArray[activeIndex]}
         </h1>
       </main>
 
